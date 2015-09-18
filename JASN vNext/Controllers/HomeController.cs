@@ -1,4 +1,6 @@
-﻿namespace JASN_vNext.Controllers
+﻿using WebApi.OutputCache.V2;
+
+namespace JASN_vNext.Controllers
 {
     using System.Diagnostics;
     using System.Text;
@@ -45,6 +47,13 @@
 
         [Route("contact", Name = HomeControllerRoute.GetContact)]
         public ActionResult Contact()
+        {
+            return this.View(HomeControllerAction.Contact);
+        }
+
+        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)]
+        [Route("contactcashed", Name = HomeControllerRoute.GetContactC)]
+        public ActionResult ContactCached()
         {
             return this.View(HomeControllerAction.Contact);
         }

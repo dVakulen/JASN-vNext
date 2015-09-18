@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JASN vNext", "JASN vNext\JASN vNext.csproj", "{E107BBBD-CAB3-4B09-9A48-8437775786A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JASN.Web", "JASN vNext\JASN.Web.csproj", "{E107BBBD-CAB3-4B09-9A48-8437775786A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{44D59C1D-276B-4AD3-BC07-06028730F9EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
