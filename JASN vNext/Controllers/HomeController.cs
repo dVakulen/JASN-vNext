@@ -1,4 +1,5 @@
-﻿using WebApi.OutputCache.V2;
+﻿using System.IO;
+using WebApi.OutputCache.V2;
 
 namespace JASN_vNext.Controllers
 {
@@ -32,12 +33,43 @@ namespace JASN_vNext.Controllers
         }
 
         #endregion
+        [Route("", Name = "Playground")]
+        public ActionResult Playground()
+        {
+            return this.View();
+        }
 
-        [Route("", Name = HomeControllerRoute.GetIndex)]
+        [Route("home", Name = HomeControllerRoute.GetIndex)]
         public ActionResult Index()
         {
             return this.View(HomeControllerAction.Index);
         }
+
+        [Route("customers")]
+        public ActionResult Customers()
+        {
+            return this.View("customers");
+        }
+
+        [Route("customersJson")]
+        public FileResult CustomersJson()
+        {
+           var z=  Server.MapPath(Url.Content("~/Content/temp/customers.json"));
+            return new FileContentResult(System.IO.File.ReadAllBytes(z), "json");
+        }
+
+        [Route("ordersJson")]
+        public FileResult OrdersJson()
+        {
+            return new FileContentResult(System.IO.File.ReadAllBytes(Server.MapPath(Url.Content("~/Content/temp/orders.json"))), "json");
+        }
+
+        [Route("orders")]
+        public ActionResult Orders()
+        {
+            return this.View("orders");
+        }
+
 
         [Route("about", Name = HomeControllerRoute.GetAbout)]
         public ActionResult About()

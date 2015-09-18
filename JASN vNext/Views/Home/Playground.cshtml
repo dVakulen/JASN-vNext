@@ -1,0 +1,36 @@
+﻿<!--
+   AngularJS with TypeScript in 20-ish Minutes
+   Dan Wahlin
+
+   http://weblogs.asp.net/dwahlin
+   http://github.com/danwahlin
+
+   1. Data Binding and Directives
+   2. Filters
+   3. Modules and Controllers
+   4. Routes
+   5. Factories
+-->
+<!DOCTYPE html>
+<html ng-app="demoApp">
+<head>
+    <title>Angular App</title>
+    @*<link href="../../Content/bootstrap/b" rel="stylesheet" />*@
+    <link href="../../Content/temp/animations.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>AngularJS and TypeScript</h1>
+    <br />
+
+    <div ng-view class="slide-animation"></div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.js"></script>
+    <script src="../../Scripts/app/app.module.js"></script>
+    <script src="../../Scripts/app/controllers/customers.controller.js"></script>
+    <script src="../../Scripts/app/controllers/orders.controller.js"></script>
+    <script src="../../Scripts/app/services/data.service.js"></script>
+    <script src="../../Scripts/app/directives/filterTextbox.directive.js"></script>
+</body>
+</html>
