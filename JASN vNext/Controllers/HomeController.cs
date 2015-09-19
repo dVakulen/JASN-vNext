@@ -36,7 +36,7 @@ namespace JASN_vNext.Controllers
         [Route("", Name = "Playground")]
         public ActionResult Playground()
         {
-            return this.View();
+            return this.View("Playground");
         }
 
         [Route("home", Name = HomeControllerRoute.GetIndex)]

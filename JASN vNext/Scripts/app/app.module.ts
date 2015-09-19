@@ -19,4 +19,5 @@
         });
     }]);
 
+  //  angular.bootstrap(document, ['demoApp']);
 })();

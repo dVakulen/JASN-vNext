@@ -13,5 +13,6 @@
             controllerAs: 'vm'
         });
     }]);
+    //  angular.bootstrap(document, ['demoApp']);
 })();
 //# sourceMappingURL=app.module.js.map

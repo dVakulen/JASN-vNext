@@ -13,7 +13,7 @@
         {
             AddSearchEngineOptimizationFilters(filters);
             AddSecurityFilters(filters);
-            AddContentSecurityPolicyFilters(filters);
+          //  AddContentSecurityPolicyFilters(filters);
         }
 
         /// <summary>
@@ -63,11 +63,11 @@
 
             // X-Content-Type-Options - Adds the X-Content-Type-Options HTTP header. Stop IE9 and below from sniffing 
             //                          files and overriding the Content-Type header (MIME type).
-            filters.Add(new XContentTypeOptionsAttribute());
+           // filters.Add(new XContentTypeOptionsAttribute());
 
             // X-Download-Options - Adds the X-Download-Options HTTP header. When users save the page, stops them from 
             //                      opening it and forces a save and manual open.
-            filters.Add(new XDownloadOptionsAttribute());
+      //      filters.Add(new XDownloadOptionsAttribute());
 
             // X-Frame-Options - Adds the X-Frame-Options HTTP header. Stop clickjacking by stopping the page from 
             //                   opening in an iframe or only allowing it from the same origin.  
@@ -77,11 +77,11 @@
             //      SameOrigin - Specifies that the X-Frame-Options header should be set in the HTTP response, 
             //                   instructing the browser to not display the page when it is loaded in an iframe.
             //      Disabled - Specifies that the X-Frame-Options header should not be set in the HTTP response.
-            filters.Add(
-                new XFrameOptionsAttribute()
-                {
-                    Policy = XFrameOptionsPolicy.Deny
-                });
+            //filters.Add(
+            //    new XFrameOptionsAttribute()
+            //    {
+            //        Policy = XFrameOptionsPolicy.Deny
+            //    });
         }
 
         /// <summary>

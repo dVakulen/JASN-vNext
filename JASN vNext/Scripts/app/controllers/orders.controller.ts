@@ -1,5 +1,5 @@
 module demoApp {
-
+    
     class OrdersController {
 
         customerId: number;
