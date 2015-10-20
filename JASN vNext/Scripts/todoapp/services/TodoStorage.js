@@ -1,6 +1,6 @@
 /// <reference path='../_all.ts' />
 var todos;
-(function (_todos) {
+(function (todos_1) {
     'use strict';
     /**
      * Services that persists and retrieves TODOs from localStorage.
@@ -17,6 +17,6 @@ var todos;
         };
         return TodoStorage;
     })();
-    _todos.TodoStorage = TodoStorage;
+    todos_1.TodoStorage = TodoStorage;
 })(todos || (todos = {}));
 //# sourceMappingURL=TodoStorage.js.map

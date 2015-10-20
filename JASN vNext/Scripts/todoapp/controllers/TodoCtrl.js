@@ -40,7 +40,9 @@ var todos;
             return directive;
         };
         TodoCtrl.prototype.onPath = function (path) {
-            this.$scope.statusFilter = (path === '/active') ? { completed: false } : (path === '/completed') ? { completed: true } : null;
+            this.$scope.statusFilter = (path === '/active') ?
+                { completed: false } : (path === '/completed') ?
+                { completed: true } : null;
         };
         TodoCtrl.prototype.onTodos = function () {
             this.$scope.remainingCount = this.filterFilter(this.todos, { completed: false }).length;
@@ -73,9 +75,7 @@ var todos;
             this.$scope.todos = this.todos = this.todos.filter(function (todoItem) { return !todoItem.completed; });
         };
         TodoCtrl.prototype.markAll = function (completed) {
-            this.todos.forEach(function (todoItem) {
-                todoItem.completed = completed;
-            });
+            this.todos.forEach(function (todoItem) { todoItem.completed = completed; });
         };
         // $inject annotation.
         // It provides $injector with information about dependencies to be injected into constructor

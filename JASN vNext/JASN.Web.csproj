@@ -141,6 +141,14 @@
     <Reference Include="NWebsec.Owin">
       <HintPath>..\packages\NWebsec.Owin.2.0.0\lib\45\NWebsec.Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Orleans, Version=1.0.0.0, Culture=neutral, PublicKeyToken=070f47935e3ed133, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Orleans.Core.1.0.9\lib\net45\Orleans.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OrleansRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=070f47935e3ed133, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Orleans.OrleansRuntime.1.0.9\lib\net45\OrleansRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -247,6 +255,7 @@
     <Compile Include="Constants\HomeController\HomeControllerRoute.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Content Include="ClientConfiguration.xml" />
     <Content Include="Content\img\about-bg.jpg" />
     <Content Include="Content\img\contact-bg.jpg" />
     <Content Include="Content\img\home-bg.jpg" />
@@ -258,6 +267,8 @@
     <Content Include="Content\todomvc-common\base.css" />
     <Content Include="Content\todomvc-common\base.js" />
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="DevTestClientConfiguration.xml" />
+    <Content Include="DevTestServerConfiguration.xml" />
     <Content Include="Error\Forbidden.html" />
     <Content Include="Error\GatewayTimeout.html" />
     <Content Include="Error\ServiceUnavailable.html" />
@@ -1305,6 +1316,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\app\controllers\" />
+    <Folder Include="Scripts\app\directives\" />
+    <Folder Include="Scripts\app\services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -1312,11 +1326,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\app\app.module.ts" />
-    <TypeScriptCompile Include="Scripts\app\controllers\customers.controller.ts" />
-    <TypeScriptCompile Include="Scripts\app\controllers\orders.controller.ts" />
-    <TypeScriptCompile Include="Scripts\app\directives\filterTextbox.directive.ts" />
-    <TypeScriptCompile Include="Scripts\app\services\data.service.ts" />
     <TypeScriptCompile Include="Scripts\todoapp\Application.ts" />
     <TypeScriptCompile Include="Scripts\todoapp\controllers\TodoCtrl.ts" />
     <TypeScriptCompile Include="Scripts\todoapp\directives\TodoBlur.ts" />
@@ -1334,6 +1343,24 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JASN.Actors\JASN.Actors.csproj">
+      <Project>{4762b93a-8352-4483-9fd9-56aa0b53ac2b}</Project>
+      <Name>JASN.Actors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JASN.Contracts\JASN.Contracts.csproj">
+      <Project>{9923f334-5fdc-4b12-9809-63152f833f84}</Project>
+      <Name>JASN.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JASN.Core\JASN.Core.csproj">
+      <Project>{dc39449c-add0-495b-a61c-06e37b095126}</Project>
+      <Name>JASN.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JASN.OrleansUtilities\JASN.OrleansUtilities.csproj">
+      <Project>{e284526a-daa9-4468-ac65-7101c4066369}</Project>
+      <Name>JASN.OrleansUtilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -8,12 +8,8 @@ var todos;
     function todoBlur() {
         return {
             link: function ($scope, element, attributes) {
-                element.bind('blur', function () {
-                    $scope.$apply(attributes.todoBlur);
-                });
-                $scope.$on('$destroy', function () {
-                    element.unbind('blur');
-                });
+                element.bind('blur', function () { $scope.$apply(attributes.todoBlur); });
+                $scope.$on('$destroy', function () { element.unbind('blur'); });
             }
         };
     }
@@ -27,12 +23,8 @@ var MyDirective = (function () {
         // See http://blog.aaronholmes.net/writing-angularjs-directives-as-typescript-classes/#comment-2111298002 for more information.
         MyDirective.prototype.link = function (scope, element, attributes) {
             /*handle all your linking requirements here*/
-            element.bind('blur', function () {
-                scope.$apply(attributes.todoBlur);
-            });
-            scope.$on('$destroy', function () {
-                element.unbind('blur');
-            });
+            element.bind('blur', function () { scope.$apply(attributes.todoBlur); });
+            scope.$on('$destroy', function () { element.unbind('blur'); });
         };
     }
     MyDirective.Factory = function () {

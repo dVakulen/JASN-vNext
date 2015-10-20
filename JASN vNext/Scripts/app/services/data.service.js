@@ -1,3 +1,4 @@
+var Angular = require("../../typings/angularjs/angular");
 var demoApp;
 (function (demoApp) {
     var DataService = (function () {
@@ -18,6 +19,6 @@ var demoApp;
         return DataService;
     })();
     demoApp.DataService = DataService;
-    angular.module('demoApp').service('demoApp.dataService', DataService);
+    Angular.angular.module('demoApp')
+        .service('demoApp.dataService', DataService);
 })(demoApp || (demoApp = {}));
-//# sourceMappingURL=data.service.js.map

@@ -1,15 +1,21 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
+using JASN.Contracts;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Orleans;
 using WebApi.OutputCache.V2;
+using System.Diagnostics;
+using System.Text;
+using System.Web.Mvc;
+using Boilerplate.Web.Mvc;
+using Boilerplate.Web.Mvc.Filters;
+using JASN_vNext.Constants;
+using JASN_vNext.Services;
 
 namespace JASN_vNext.Controllers
 {
-    using System.Diagnostics;
-    using System.Text;
-    using System.Web.Mvc;
-    using Boilerplate.Web.Mvc;
-    using Boilerplate.Web.Mvc.Filters;
-    using JASN_vNext.Constants;
-    using JASN_vNext.Services;
 
     public class HomeController : Controller
     {
@@ -33,15 +39,17 @@ namespace JASN_vNext.Controllers
         }
 
         #endregion
-        [Route("", Name = "Playground")]
-        public ActionResult Playground()
-        {
-            return this.View("Playground");
-        }
+        //[Route("", Name = "Playground")]
+        //public ActionResult Playground()
+        //{
+        //    return this.View("Playground");
+        //}
 
         [Route("home", Name = HomeControllerRoute.GetIndex)]
         public ActionResult Index()
         {
+            var a = HttpContext.Cache.EffectivePercentagePhysicalMemoryLimit;
+            var b = HttpContext.Cache.EffectivePrivateBytesLimit;
             return this.View(HomeControllerAction.Index);
         }
 
@@ -52,10 +60,24 @@ namespace JASN_vNext.Controllers
         }
 
         [Route("customersJson")]
-        public FileResult CustomersJson()
+        public async Task<string> CustomersJson()
         {
-           var z=  Server.MapPath(Url.Content("~/Content/temp/customers.json"));
-            return new FileContentResult(System.IO.File.ReadAllBytes(z), "json");
+
+            var friend = GrainClient.GrainFactory.GetGrain<IHello>(0);
+            var cust =await friend.GetCustomers();
+            var serializer = new JsonSerializer()
+{
+    ContractResolver = new CamelCasePropertyNamesContractResolver()
+};
+var settings = new JsonSerializerSettings()
+{
+    ContractResolver = new CamelCasePropertyNamesContractResolver()
+};
+          
+var serialized = JsonConvert.SerializeObject(cust, settings);
+return serialized;
+           //var z=  Server.MapPath(Url.Content("~/Content/temp/customers.json"));
+           // return new FileContentResult(System.IO.File.ReadAllBytes(z), "json");
         }
 
         [Route("ordersJson")]

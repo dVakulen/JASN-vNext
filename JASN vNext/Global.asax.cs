@@ -1,4 +1,9 @@
-﻿namespace JASN_vNext
+﻿using System;
+using HelloWorld;
+using JASN.Contracts;
+using Orleans;
+
+namespace JASN_vNext
 {
     using System.Web.Helpers;
     using System.Web.Mvc;
@@ -10,6 +15,10 @@
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        private static OrleansHostWrapper hostWrapper;
+        
+        private static AppDomain hostDomain;
+
         protected void Application_Start()
         {
             ConfigureViewEngines();
@@ -18,7 +27,50 @@
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Init();
         }
+
+
+        void Init()
+        {
+
+#if !USE_INPROC_SILO
+            //   hostDomain = AppDomain.CreateDomain("OrleansHost", null, new AppDomainSetup
+            //{
+            //    AppDomainInitializer = InitSilo,
+            //    AppDomainInitializerArguments = new string[0]
+            //});
+#endif
+
+              // GrainClient.Initialize(Server.MapPath("DevTestClientConfiguration.xml"));
+        
+
+            Console.WriteLine("Orleans Silo is running.\nPress Enter to terminate...");
+          //  Console.ReadLine();
+
+#if USE_INPROC_SILO
+         
+#endif
+        }
+        static void InitSilo(string[] args)
+        {
+            hostWrapper = new OrleansHostWrapper(args);
+
+            if (!hostWrapper.Run())
+            {
+                Console.Error.WriteLine("Failed to initialize Orleans silo");
+            }
+        }
+
+        static void ShutdownSilo()
+        {
+            if (hostWrapper != null)
+            {
+                hostWrapper.Dispose();
+                GC.SuppressFinalize(hostWrapper);
+            }
+        }
+
 
         /// <summary>
         /// Handles the Content Security Policy (CSP) violation errors. For more information see FilterConfig.
@@ -76,6 +128,11 @@
             // If you have enabled SSL. Uncomment this line to ensure that the Anti-Forgery 
             // cookie requires SSL to be sent across the wire. 
             // AntiForgeryConfig.RequireSsl = true;
+        }
+
+        protected void Application_End()
+        {
+               hostDomain.DoCallBack(ShutdownSilo);
         }
     }
 }

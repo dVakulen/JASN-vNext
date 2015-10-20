@@ -7,6 +7,7 @@
 var todos;
 (function (todos) {
     'use strict';
-    var todomvc = angular.module('todomvc', []).controller('todoCtrl', todos.TodoCtrl.Factory());
+    var todomvc = angular.module('todomvc', [])
+        .controller('todoCtrl', todos.TodoCtrl.Factory());
 })(todos || (todos = {}));
 //# sourceMappingURL=Application.js.map
