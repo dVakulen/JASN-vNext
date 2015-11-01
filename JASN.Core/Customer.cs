@@ -14,6 +14,7 @@ namespace JASN.Core
             Id = id;
             Name = name;
             Total = total;
+            
         }
 
         public int Id { get; set; }
