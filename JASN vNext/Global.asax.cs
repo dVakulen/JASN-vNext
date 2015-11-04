@@ -33,20 +33,7 @@ namespace JASN_vNext
 
         void Init()
         {
-
-#if !USE_INPROC_SILO
-            //   hostDomain = AppDomain.CreateDomain("OrleansHost", null, new AppDomainSetup
-            //{
-            //    AppDomainInitializer = InitSilo,
-            //    AppDomainInitializerArguments = new string[0]
-            //});
-#endif
-
-              // GrainClient.Initialize(Server.MapPath("DevTestClientConfiguration.xml"));
-        
-
             Console.WriteLine("Orleans Silo is running.\nPress Enter to terminate...");
-          //  Console.ReadLine();
 
 #if USE_INPROC_SILO
          
