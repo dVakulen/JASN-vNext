@@ -16,6 +16,1061 @@
 #pragma warning disable 1591
 #pragma warning disable 1998
 
+namespace Orleans.Samples.Chirper.GrainInterfaces
+{
+    using System;
+    using System.Net;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
+    using System.IO;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using Orleans.Serialization;
+    using Orleans.Samples.Chirper.GrainInterfaces;
+    using Orleans;
+    using Orleans.Runtime;
+    using Orleans.Core;
+    using System.Collections;
+    
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class ChirperPublisherFactory
+    {
+        
+
+                        [System.Obsolete("This method has been deprecated. Please use GrainFactory.GetGrain<IChirperPublisher> instead.")]
+                        public static IChirperPublisher GetGrain(long primaryKey)
+                        {
+                            return Cast(global::Orleans.CodeGeneration.GrainFactoryBase.MakeGrainReferenceInternal(typeof(IChirperPublisher), primaryKey));
+                        }
+
+                        [System.Obsolete("This method has been deprecated. Please use GrainFactory.GetGrain<IChirperPublisher> instead.")]
+                        public static IChirperPublisher GetGrain(long primaryKey, string grainClassNamePrefix)
+                        {
+                            return Cast(global::Orleans.CodeGeneration.GrainFactoryBase.MakeGrainReferenceInternal(typeof(IChirperPublisher), primaryKey, grainClassNamePrefix));
+                        }
+
+            public static IChirperPublisher Cast(global::Orleans.Runtime.IAddressable grainRef)
+            {
+                
+                return ChirperPublisherReference.Cast(grainRef);
+            }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+        [System.SerializableAttribute()]
+        [global::Orleans.CodeGeneration.GrainReferenceAttribute("Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher")]
+        internal class ChirperPublisherReference : global::Orleans.Runtime.GrainReference, global::Orleans.Runtime.IAddressable, Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher
+        {
+            
+
+            public static IChirperPublisher Cast(global::Orleans.Runtime.IAddressable grainRef)
+            {
+                
+                return (IChirperPublisher) global::Orleans.Runtime.GrainReference.CastInternal(typeof(IChirperPublisher), (global::Orleans.Runtime.GrainReference gr) => { return new ChirperPublisherReference(gr);}, grainRef, 562364977);
+            }
+            
+            protected internal ChirperPublisherReference(global::Orleans.Runtime.GrainReference reference) : 
+                    base(reference)
+            {
+            }
+            
+            protected internal ChirperPublisherReference(SerializationInfo info, StreamingContext context) : 
+                    base(info, context)
+            {
+            }
+            
+            protected override int InterfaceId
+            {
+                get
+                {
+                    return 562364977;
+                }
+            }
+            
+            public override string InterfaceName
+            {
+                get
+                {
+                    return "Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher";
+                }
+            }
+            
+            [global::Orleans.CodeGeneration.CopierMethodAttribute()]
+            public static object _Copier(object original)
+            {
+                ChirperPublisherReference input = ((ChirperPublisherReference)(original));
+                return ((ChirperPublisherReference)(global::Orleans.Runtime.GrainReference.CopyGrainReference(input)));
+            }
+            
+            [global::Orleans.CodeGeneration.SerializerMethodAttribute()]
+            public static void _Serializer(object original, global::Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+            {
+                ChirperPublisherReference input = ((ChirperPublisherReference)(original));
+                global::Orleans.Runtime.GrainReference.SerializeGrainReference(input, stream, expected);
+            }
+            
+            [global::Orleans.CodeGeneration.DeserializerMethodAttribute()]
+            public static object _Deserializer(System.Type expected, global::Orleans.Serialization.BinaryTokenStreamReader stream)
+            {
+                return ChirperPublisherReference.Cast(((global::Orleans.Runtime.GrainReference)(global::Orleans.Runtime.GrainReference.DeserializeGrainReference(expected, stream))));
+            }
+            
+            public override bool IsCompatible(int interfaceId)
+            {
+                return (interfaceId == this.InterfaceId);
+            }
+            
+            protected override string GetMethodName(int interfaceId, int methodId)
+            {
+                return ChirperPublisherMethodInvoker.GetMethodName(interfaceId, methodId);
+            }
+            
+            System.Threading.Tasks.Task<long> Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher.GetUserId()
+            {
+
+                return base.InvokeMethodAsync<System.Int64>(1973211050, null );
+            }
+            
+            System.Threading.Tasks.Task<string> Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher.GetUserAlias()
+            {
+
+                return base.InvokeMethodAsync<System.String>(208463624, null );
+            }
+            
+            System.Threading.Tasks.Task<System.Collections.Generic.List<Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage>> Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher.GetPublishedMessages(int @n, int @start)
+            {
+
+                return base.InvokeMethodAsync<System.Collections.Generic.List<Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage>>(438764651, new object[] {@n, @start} );
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher.AddFollower(string @userAlias, long @userId, Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber @follower)
+            {
+
+                return base.InvokeMethodAsync<object>(1631913776, new object[] {@userAlias, @userId, @follower is global::Orleans.Grain ? @follower.AsReference<Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber>() : @follower} );
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher.RemoveFollower(string @userAlias, Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber @follower)
+            {
+
+                return base.InvokeMethodAsync<object>(-370855882, new object[] {@userAlias, @follower is global::Orleans.Grain ? @follower.AsReference<Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber>() : @follower} );
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    [global::Orleans.CodeGeneration.MethodInvokerAttribute("Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher", 562364977)]
+    internal class ChirperPublisherMethodInvoker : global::Orleans.CodeGeneration.IGrainMethodInvoker
+    {
+        
+        int global::Orleans.CodeGeneration.IGrainMethodInvoker.InterfaceId
+        {
+            get
+            {
+                return 562364977;
+            }
+        }
+        
+        global::System.Threading.Tasks.Task<object> global::Orleans.CodeGeneration.IGrainMethodInvoker.Invoke(global::Orleans.Runtime.IAddressable grain, int interfaceId, int methodId, object[] arguments)
+        {
+
+            try
+            {                    if (grain == null) throw new System.ArgumentNullException("grain");
+                switch (interfaceId)
+                {
+                    case 562364977:  // IChirperPublisher
+                        switch (methodId)
+                        {
+                            case 1973211050: 
+                                return ((IChirperPublisher)grain).GetUserId().ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case 208463624: 
+                                return ((IChirperPublisher)grain).GetUserAlias().ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case 438764651: 
+                                return ((IChirperPublisher)grain).GetPublishedMessages((Int32)arguments[0], (Int32)arguments[1]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case 1631913776: 
+                                return ((IChirperPublisher)grain).AddFollower((String)arguments[0], (Int64)arguments[1], (IChirperSubscriber)arguments[2]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            case -370855882: 
+                                return ((IChirperPublisher)grain).RemoveFollower((String)arguments[0], (IChirperSubscriber)arguments[1]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                        }
+                    default:
+                        throw new System.InvalidCastException("interfaceId="+interfaceId);
+                }
+            }
+            catch(Exception ex)
+            {
+                var t = new System.Threading.Tasks.TaskCompletionSource<object>();
+                t.SetException(ex);
+                return t.Task;
+            }
+        }
+        
+        public static string GetMethodName(int interfaceId, int methodId)
+        {
+
+            switch (interfaceId)
+            {
+                
+                case 562364977:  // IChirperPublisher
+                    switch (methodId)
+                    {
+                        case 1973211050:
+                            return "GetUserId";
+                    case 208463624:
+                            return "GetUserAlias";
+                    case 438764651:
+                            return "GetPublishedMessages";
+                    case 1631913776:
+                            return "AddFollower";
+                    case -370855882:
+                            return "RemoveFollower";
+                    
+                        default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                    }
+
+                default:
+                    throw new System.InvalidCastException("interfaceId="+interfaceId);
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class ChirperSubscriberFactory
+    {
+        
+
+                        [System.Obsolete("This method has been deprecated. Please use GrainFactory.GetGrain<IChirperSubscriber> instead.")]
+                        public static IChirperSubscriber GetGrain(long primaryKey)
+                        {
+                            return Cast(global::Orleans.CodeGeneration.GrainFactoryBase.MakeGrainReferenceInternal(typeof(IChirperSubscriber), primaryKey));
+                        }
+
+                        [System.Obsolete("This method has been deprecated. Please use GrainFactory.GetGrain<IChirperSubscriber> instead.")]
+                        public static IChirperSubscriber GetGrain(long primaryKey, string grainClassNamePrefix)
+                        {
+                            return Cast(global::Orleans.CodeGeneration.GrainFactoryBase.MakeGrainReferenceInternal(typeof(IChirperSubscriber), primaryKey, grainClassNamePrefix));
+                        }
+
+            public static IChirperSubscriber Cast(global::Orleans.Runtime.IAddressable grainRef)
+            {
+                
+                return ChirperSubscriberReference.Cast(grainRef);
+            }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+        [System.SerializableAttribute()]
+        [global::Orleans.CodeGeneration.GrainReferenceAttribute("Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber")]
+        internal class ChirperSubscriberReference : global::Orleans.Runtime.GrainReference, global::Orleans.Runtime.IAddressable, Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber
+        {
+            
+
+            public static IChirperSubscriber Cast(global::Orleans.Runtime.IAddressable grainRef)
+            {
+                
+                return (IChirperSubscriber) global::Orleans.Runtime.GrainReference.CastInternal(typeof(IChirperSubscriber), (global::Orleans.Runtime.GrainReference gr) => { return new ChirperSubscriberReference(gr);}, grainRef, -930412412);
+            }
+            
+            protected internal ChirperSubscriberReference(global::Orleans.Runtime.GrainReference reference) : 
+                    base(reference)
+            {
+            }
+            
+            protected internal ChirperSubscriberReference(SerializationInfo info, StreamingContext context) : 
+                    base(info, context)
+            {
+            }
+            
+            protected override int InterfaceId
+            {
+                get
+                {
+                    return -930412412;
+                }
+            }
+            
+            public override string InterfaceName
+            {
+                get
+                {
+                    return "Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber";
+                }
+            }
+            
+            [global::Orleans.CodeGeneration.CopierMethodAttribute()]
+            public static object _Copier(object original)
+            {
+                ChirperSubscriberReference input = ((ChirperSubscriberReference)(original));
+                return ((ChirperSubscriberReference)(global::Orleans.Runtime.GrainReference.CopyGrainReference(input)));
+            }
+            
+            [global::Orleans.CodeGeneration.SerializerMethodAttribute()]
+            public static void _Serializer(object original, global::Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+            {
+                ChirperSubscriberReference input = ((ChirperSubscriberReference)(original));
+                global::Orleans.Runtime.GrainReference.SerializeGrainReference(input, stream, expected);
+            }
+            
+            [global::Orleans.CodeGeneration.DeserializerMethodAttribute()]
+            public static object _Deserializer(System.Type expected, global::Orleans.Serialization.BinaryTokenStreamReader stream)
+            {
+                return ChirperSubscriberReference.Cast(((global::Orleans.Runtime.GrainReference)(global::Orleans.Runtime.GrainReference.DeserializeGrainReference(expected, stream))));
+            }
+            
+            public override bool IsCompatible(int interfaceId)
+            {
+                return (interfaceId == this.InterfaceId);
+            }
+            
+            protected override string GetMethodName(int interfaceId, int methodId)
+            {
+                return ChirperSubscriberMethodInvoker.GetMethodName(interfaceId, methodId);
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber.NewChirp(Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage @chirp)
+            {
+
+                return base.InvokeMethodAsync<object>(-1105116289, new object[] {@chirp} );
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    [global::Orleans.CodeGeneration.MethodInvokerAttribute("Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber", -930412412)]
+    internal class ChirperSubscriberMethodInvoker : global::Orleans.CodeGeneration.IGrainMethodInvoker
+    {
+        
+        int global::Orleans.CodeGeneration.IGrainMethodInvoker.InterfaceId
+        {
+            get
+            {
+                return -930412412;
+            }
+        }
+        
+        global::System.Threading.Tasks.Task<object> global::Orleans.CodeGeneration.IGrainMethodInvoker.Invoke(global::Orleans.Runtime.IAddressable grain, int interfaceId, int methodId, object[] arguments)
+        {
+
+            try
+            {                    if (grain == null) throw new System.ArgumentNullException("grain");
+                switch (interfaceId)
+                {
+                    case -930412412:  // IChirperSubscriber
+                        switch (methodId)
+                        {
+                            case -1105116289: 
+                                return ((IChirperSubscriber)grain).NewChirp((ChirperMessage)arguments[0]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                        }
+                    default:
+                        throw new System.InvalidCastException("interfaceId="+interfaceId);
+                }
+            }
+            catch(Exception ex)
+            {
+                var t = new System.Threading.Tasks.TaskCompletionSource<object>();
+                t.SetException(ex);
+                return t.Task;
+            }
+        }
+        
+        public static string GetMethodName(int interfaceId, int methodId)
+        {
+
+            switch (interfaceId)
+            {
+                
+                case -930412412:  // IChirperSubscriber
+                    switch (methodId)
+                    {
+                        case -1105116289:
+                            return "NewChirp";
+                    
+                        default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                    }
+
+                default:
+                    throw new System.InvalidCastException("interfaceId="+interfaceId);
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class ChirperAccountFactory
+    {
+        
+
+                        [System.Obsolete("This method has been deprecated. Please use GrainFactory.GetGrain<IChirperAccount> instead.")]
+                        public static IChirperAccount GetGrain(long primaryKey)
+                        {
+                            return Cast(global::Orleans.CodeGeneration.GrainFactoryBase.MakeGrainReferenceInternal(typeof(IChirperAccount), primaryKey));
+                        }
+
+                        [System.Obsolete("This method has been deprecated. Please use GrainFactory.GetGrain<IChirperAccount> instead.")]
+                        public static IChirperAccount GetGrain(long primaryKey, string grainClassNamePrefix)
+                        {
+                            return Cast(global::Orleans.CodeGeneration.GrainFactoryBase.MakeGrainReferenceInternal(typeof(IChirperAccount), primaryKey, grainClassNamePrefix));
+                        }
+
+            public static IChirperAccount Cast(global::Orleans.Runtime.IAddressable grainRef)
+            {
+                
+                return ChirperAccountReference.Cast(grainRef);
+            }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+        [System.SerializableAttribute()]
+        [global::Orleans.CodeGeneration.GrainReferenceAttribute("Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount")]
+        internal class ChirperAccountReference : global::Orleans.Runtime.GrainReference, global::Orleans.Runtime.IAddressable, Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount
+        {
+            
+
+            public static IChirperAccount Cast(global::Orleans.Runtime.IAddressable grainRef)
+            {
+                
+                return (IChirperAccount) global::Orleans.Runtime.GrainReference.CastInternal(typeof(IChirperAccount), (global::Orleans.Runtime.GrainReference gr) => { return new ChirperAccountReference(gr);}, grainRef, -1804278580);
+            }
+            
+            protected internal ChirperAccountReference(global::Orleans.Runtime.GrainReference reference) : 
+                    base(reference)
+            {
+            }
+            
+            protected internal ChirperAccountReference(SerializationInfo info, StreamingContext context) : 
+                    base(info, context)
+            {
+            }
+            
+            protected override int InterfaceId
+            {
+                get
+                {
+                    return -1804278580;
+                }
+            }
+            
+            public override string InterfaceName
+            {
+                get
+                {
+                    return "Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount";
+                }
+            }
+            
+            [global::Orleans.CodeGeneration.CopierMethodAttribute()]
+            public static object _Copier(object original)
+            {
+                ChirperAccountReference input = ((ChirperAccountReference)(original));
+                return ((ChirperAccountReference)(global::Orleans.Runtime.GrainReference.CopyGrainReference(input)));
+            }
+            
+            [global::Orleans.CodeGeneration.SerializerMethodAttribute()]
+            public static void _Serializer(object original, global::Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+            {
+                ChirperAccountReference input = ((ChirperAccountReference)(original));
+                global::Orleans.Runtime.GrainReference.SerializeGrainReference(input, stream, expected);
+            }
+            
+            [global::Orleans.CodeGeneration.DeserializerMethodAttribute()]
+            public static object _Deserializer(System.Type expected, global::Orleans.Serialization.BinaryTokenStreamReader stream)
+            {
+                return ChirperAccountReference.Cast(((global::Orleans.Runtime.GrainReference)(global::Orleans.Runtime.GrainReference.DeserializeGrainReference(expected, stream))));
+            }
+            
+            public override bool IsCompatible(int interfaceId)
+            {
+                return (((interfaceId == this.InterfaceId) 
+                            || (interfaceId == 562364977)) 
+                            || (interfaceId == -930412412));
+            }
+            
+            protected override string GetMethodName(int interfaceId, int methodId)
+            {
+                return ChirperAccountMethodInvoker.GetMethodName(interfaceId, methodId);
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount.SetUserDetails(Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo @userInfo)
+            {
+
+                return base.InvokeMethodAsync<object>(957692321, new object[] {@userInfo} );
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount.FollowUserId(long @userIdToFollow)
+            {
+
+                return base.InvokeMethodAsync<object>(752357790, new object[] {@userIdToFollow} );
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount.UnfollowUserId(long @userIdToUnfollow)
+            {
+
+                return base.InvokeMethodAsync<object>(-601623755, new object[] {@userIdToUnfollow} );
+            }
+            
+            System.Threading.Tasks.Task<System.Collections.Generic.List<Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo>> Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount.GetFollowingList()
+            {
+
+                return base.InvokeMethodAsync<System.Collections.Generic.List<Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo>>(-1960464744, null );
+            }
+            
+            System.Threading.Tasks.Task<System.Collections.Generic.List<Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo>> Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount.GetFollowersList()
+            {
+
+                return base.InvokeMethodAsync<System.Collections.Generic.List<Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo>>(-491886212, null );
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount.PublishMessage(string @chirpMessage)
+            {
+
+                return base.InvokeMethodAsync<object>(-68598853, new object[] {@chirpMessage} );
+            }
+            
+            System.Threading.Tasks.Task<System.Collections.Generic.List<Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage>> Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount.GetReceivedMessages(int @n, int @start)
+            {
+
+                return base.InvokeMethodAsync<System.Collections.Generic.List<Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage>>(913298032, new object[] {@n, @start} );
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount.ViewerConnect(Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer @viewer)
+            {
+global::Orleans.CodeGeneration.GrainFactoryBase.CheckGrainObserverParamInternal(@viewer);
+
+                return base.InvokeMethodAsync<object>(913319715, new object[] {@viewer is global::Orleans.Grain ? @viewer.AsReference<Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer>() : @viewer} );
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount.ViewerDisconnect(Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer @viewer)
+            {
+global::Orleans.CodeGeneration.GrainFactoryBase.CheckGrainObserverParamInternal(@viewer);
+
+                return base.InvokeMethodAsync<object>(1708978275, new object[] {@viewer is global::Orleans.Grain ? @viewer.AsReference<Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer>() : @viewer} );
+            }
+            
+            System.Threading.Tasks.Task<long> Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher.GetUserId()
+            {
+
+                return base.InvokeMethodAsync<System.Int64>(1973211050, null );
+            }
+            
+            System.Threading.Tasks.Task<string> Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher.GetUserAlias()
+            {
+
+                return base.InvokeMethodAsync<System.String>(208463624, null );
+            }
+            
+            System.Threading.Tasks.Task<System.Collections.Generic.List<Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage>> Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher.GetPublishedMessages(int @n, int @start)
+            {
+
+                return base.InvokeMethodAsync<System.Collections.Generic.List<Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage>>(438764651, new object[] {@n, @start} );
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher.AddFollower(string @userAlias, long @userId, Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber @follower)
+            {
+
+                return base.InvokeMethodAsync<object>(1631913776, new object[] {@userAlias, @userId, @follower is global::Orleans.Grain ? @follower.AsReference<Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber>() : @follower} );
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperPublisher.RemoveFollower(string @userAlias, Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber @follower)
+            {
+
+                return base.InvokeMethodAsync<object>(-370855882, new object[] {@userAlias, @follower is global::Orleans.Grain ? @follower.AsReference<Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber>() : @follower} );
+            }
+            
+            System.Threading.Tasks.Task Orleans.Samples.Chirper.GrainInterfaces.IChirperSubscriber.NewChirp(Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage @chirp)
+            {
+
+                return base.InvokeMethodAsync<object>(-1105116289, new object[] {@chirp} );
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    [global::Orleans.CodeGeneration.MethodInvokerAttribute("Orleans.Samples.Chirper.GrainInterfaces.IChirperAccount", -1804278580)]
+    internal class ChirperAccountMethodInvoker : global::Orleans.CodeGeneration.IGrainMethodInvoker
+    {
+        
+        int global::Orleans.CodeGeneration.IGrainMethodInvoker.InterfaceId
+        {
+            get
+            {
+                return -1804278580;
+            }
+        }
+        
+        global::System.Threading.Tasks.Task<object> global::Orleans.CodeGeneration.IGrainMethodInvoker.Invoke(global::Orleans.Runtime.IAddressable grain, int interfaceId, int methodId, object[] arguments)
+        {
+
+            try
+            {                    if (grain == null) throw new System.ArgumentNullException("grain");
+                switch (interfaceId)
+                {
+                    case -1804278580:  // IChirperAccount
+                        switch (methodId)
+                        {
+                            case 957692321: 
+                                return ((IChirperAccount)grain).SetUserDetails((ChirperUserInfo)arguments[0]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            case 752357790: 
+                                return ((IChirperAccount)grain).FollowUserId((Int64)arguments[0]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            case -601623755: 
+                                return ((IChirperAccount)grain).UnfollowUserId((Int64)arguments[0]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            case -1960464744: 
+                                return ((IChirperAccount)grain).GetFollowingList().ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case -491886212: 
+                                return ((IChirperAccount)grain).GetFollowersList().ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case -68598853: 
+                                return ((IChirperAccount)grain).PublishMessage((String)arguments[0]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            case 913298032: 
+                                return ((IChirperAccount)grain).GetReceivedMessages((Int32)arguments[0], (Int32)arguments[1]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case 913319715: 
+                                return ((IChirperAccount)grain).ViewerConnect((IChirperViewer)arguments[0]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            case 1708978275: 
+                                return ((IChirperAccount)grain).ViewerDisconnect((IChirperViewer)arguments[0]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            case 1973211050: 
+                                return ((IChirperAccount)grain).GetUserId().ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case 208463624: 
+                                return ((IChirperAccount)grain).GetUserAlias().ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case 438764651: 
+                                return ((IChirperAccount)grain).GetPublishedMessages((Int32)arguments[0], (Int32)arguments[1]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case 1631913776: 
+                                return ((IChirperAccount)grain).AddFollower((String)arguments[0], (Int64)arguments[1], (IChirperSubscriber)arguments[2]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            case -370855882: 
+                                return ((IChirperAccount)grain).RemoveFollower((String)arguments[0], (IChirperSubscriber)arguments[1]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            case -1105116289: 
+                                return ((IChirperAccount)grain).NewChirp((ChirperMessage)arguments[0]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                        }case 562364977:  // IChirperPublisher
+                        switch (methodId)
+                        {
+                            case 1973211050: 
+                                return ((IChirperPublisher)grain).GetUserId().ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case 208463624: 
+                                return ((IChirperPublisher)grain).GetUserAlias().ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case 438764651: 
+                                return ((IChirperPublisher)grain).GetPublishedMessages((Int32)arguments[0], (Int32)arguments[1]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)t.Result; });
+                            case 1631913776: 
+                                return ((IChirperPublisher)grain).AddFollower((String)arguments[0], (Int64)arguments[1], (IChirperSubscriber)arguments[2]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            case -370855882: 
+                                return ((IChirperPublisher)grain).RemoveFollower((String)arguments[0], (IChirperSubscriber)arguments[1]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                        }case -930412412:  // IChirperSubscriber
+                        switch (methodId)
+                        {
+                            case -1105116289: 
+                                return ((IChirperSubscriber)grain).NewChirp((ChirperMessage)arguments[0]).ContinueWith(t => {if (t.Status == System.Threading.Tasks.TaskStatus.Faulted) throw t.Exception; return (object)null; });
+                            default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                        }
+                    default:
+                        throw new System.InvalidCastException("interfaceId="+interfaceId);
+                }
+            }
+            catch(Exception ex)
+            {
+                var t = new System.Threading.Tasks.TaskCompletionSource<object>();
+                t.SetException(ex);
+                return t.Task;
+            }
+        }
+        
+        public static string GetMethodName(int interfaceId, int methodId)
+        {
+
+            switch (interfaceId)
+            {
+                
+                case -1804278580:  // IChirperAccount
+                    switch (methodId)
+                    {
+                        case 957692321:
+                            return "SetUserDetails";
+                    case 752357790:
+                            return "FollowUserId";
+                    case -601623755:
+                            return "UnfollowUserId";
+                    case -1960464744:
+                            return "GetFollowingList";
+                    case -491886212:
+                            return "GetFollowersList";
+                    case -68598853:
+                            return "PublishMessage";
+                    case 913298032:
+                            return "GetReceivedMessages";
+                    case 913319715:
+                            return "ViewerConnect";
+                    case 1708978275:
+                            return "ViewerDisconnect";
+                    case 1973211050:
+                            return "GetUserId";
+                    case 208463624:
+                            return "GetUserAlias";
+                    case 438764651:
+                            return "GetPublishedMessages";
+                    case 1631913776:
+                            return "AddFollower";
+                    case -370855882:
+                            return "RemoveFollower";
+                    case -1105116289:
+                            return "NewChirp";
+                    
+                        default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                    }
+                case 562364977:  // IChirperPublisher
+                    switch (methodId)
+                    {
+                        case 1973211050:
+                            return "GetUserId";
+                    case 208463624:
+                            return "GetUserAlias";
+                    case 438764651:
+                            return "GetPublishedMessages";
+                    case 1631913776:
+                            return "AddFollower";
+                    case -370855882:
+                            return "RemoveFollower";
+                    
+                        default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                    }
+                case -930412412:  // IChirperSubscriber
+                    switch (methodId)
+                    {
+                        case -1105116289:
+                            return "NewChirp";
+                    
+                        default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                    }
+
+                default:
+                    throw new System.InvalidCastException("interfaceId="+interfaceId);
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class ChirperViewerFactory
+    {
+        
+
+            public static IChirperViewer Cast(global::Orleans.Runtime.IAddressable grainRef)
+            {
+                
+                return ChirperViewerReference.Cast(grainRef);
+            }
+
+        private static global::Orleans.CodeGeneration.IGrainMethodInvoker methodInvoker;
+
+        public async static System.Threading.Tasks.Task<IChirperViewer> CreateObjectReference(IChirperViewer obj)
+        {
+            if (methodInvoker == null) methodInvoker = new ChirperViewerMethodInvoker();
+            return ChirperViewerFactory.Cast(await global::Orleans.Runtime.GrainReference.CreateObjectReference(obj, methodInvoker));
+        }
+
+        public static System.Threading.Tasks.Task DeleteObjectReference(IChirperViewer reference)
+        {
+            return global::Orleans.Runtime.GrainReference.DeleteObjectReference(reference);
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+        [System.SerializableAttribute()]
+        [global::Orleans.CodeGeneration.GrainReferenceAttribute("Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer")]
+        internal class ChirperViewerReference : global::Orleans.Runtime.GrainReference, global::Orleans.Runtime.IAddressable, Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer
+        {
+            
+
+            public static IChirperViewer Cast(global::Orleans.Runtime.IAddressable grainRef)
+            {
+                
+                return (IChirperViewer) global::Orleans.Runtime.GrainReference.CastInternal(typeof(IChirperViewer), (global::Orleans.Runtime.GrainReference gr) => { return new ChirperViewerReference(gr);}, grainRef, -874440916);
+            }
+            
+            protected internal ChirperViewerReference(global::Orleans.Runtime.GrainReference reference) : 
+                    base(reference)
+            {
+            }
+            
+            protected internal ChirperViewerReference(SerializationInfo info, StreamingContext context) : 
+                    base(info, context)
+            {
+            }
+            
+            protected override int InterfaceId
+            {
+                get
+                {
+                    return -874440916;
+                }
+            }
+            
+            public override string InterfaceName
+            {
+                get
+                {
+                    return "Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer";
+                }
+            }
+            
+            [global::Orleans.CodeGeneration.CopierMethodAttribute()]
+            public static object _Copier(object original)
+            {
+                ChirperViewerReference input = ((ChirperViewerReference)(original));
+                return ((ChirperViewerReference)(global::Orleans.Runtime.GrainReference.CopyGrainReference(input)));
+            }
+            
+            [global::Orleans.CodeGeneration.SerializerMethodAttribute()]
+            public static void _Serializer(object original, global::Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+            {
+                ChirperViewerReference input = ((ChirperViewerReference)(original));
+                global::Orleans.Runtime.GrainReference.SerializeGrainReference(input, stream, expected);
+            }
+            
+            [global::Orleans.CodeGeneration.DeserializerMethodAttribute()]
+            public static object _Deserializer(System.Type expected, global::Orleans.Serialization.BinaryTokenStreamReader stream)
+            {
+                return ChirperViewerReference.Cast(((global::Orleans.Runtime.GrainReference)(global::Orleans.Runtime.GrainReference.DeserializeGrainReference(expected, stream))));
+            }
+            
+            public override bool IsCompatible(int interfaceId)
+            {
+                return (interfaceId == this.InterfaceId);
+            }
+            
+            protected override string GetMethodName(int interfaceId, int methodId)
+            {
+                return ChirperViewerMethodInvoker.GetMethodName(interfaceId, methodId);
+            }
+            
+            void Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer.NewChirpArrived(Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage @chirp)
+            {
+
+                    base.InvokeOneWayMethod(-343496927, new object[] {@chirp} );
+            }
+            
+            void Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer.SubscriptionAdded(Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo @following)
+            {
+
+                    base.InvokeOneWayMethod(489541775, new object[] {@following} );
+            }
+            
+            void Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer.SubscriptionRemoved(Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo @notFollowing)
+            {
+
+                    base.InvokeOneWayMethod(1797324738, new object[] {@notFollowing} );
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    [global::Orleans.CodeGeneration.MethodInvokerAttribute("Orleans.Samples.Chirper.GrainInterfaces.IChirperViewer", -874440916)]
+    internal class ChirperViewerMethodInvoker : global::Orleans.CodeGeneration.IGrainMethodInvoker
+    {
+        
+        int global::Orleans.CodeGeneration.IGrainMethodInvoker.InterfaceId
+        {
+            get
+            {
+                return -874440916;
+            }
+        }
+        
+        global::System.Threading.Tasks.Task<object> global::Orleans.CodeGeneration.IGrainMethodInvoker.Invoke(global::Orleans.Runtime.IAddressable grain, int interfaceId, int methodId, object[] arguments)
+        {
+
+            try
+            {                    if (grain == null) throw new System.ArgumentNullException("grain");
+                switch (interfaceId)
+                {
+                    case -874440916:  // IChirperViewer
+                        switch (methodId)
+                        {
+                            case -343496927: 
+                                ((IChirperViewer)grain).NewChirpArrived((ChirperMessage)arguments[0]); return System.Threading.Tasks.Task.FromResult((object)true);
+                            case 489541775: 
+                                ((IChirperViewer)grain).SubscriptionAdded((ChirperUserInfo)arguments[0]); return System.Threading.Tasks.Task.FromResult((object)true);
+                            case 1797324738: 
+                                ((IChirperViewer)grain).SubscriptionRemoved((ChirperUserInfo)arguments[0]); return System.Threading.Tasks.Task.FromResult((object)true);
+                            default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                        }
+                    default:
+                        throw new System.InvalidCastException("interfaceId="+interfaceId);
+                }
+            }
+            catch(Exception ex)
+            {
+                var t = new System.Threading.Tasks.TaskCompletionSource<object>();
+                t.SetException(ex);
+                return t.Task;
+            }
+        }
+        
+        public static string GetMethodName(int interfaceId, int methodId)
+        {
+
+            switch (interfaceId)
+            {
+                
+                case -874440916:  // IChirperViewer
+                    switch (methodId)
+                    {
+                        case -343496927:
+                            return "NewChirpArrived";
+                    case 489541775:
+                            return "SubscriptionAdded";
+                    case 1797324738:
+                            return "SubscriptionRemoved";
+                    
+                        default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                    }
+
+                default:
+                    throw new System.InvalidCastException("interfaceId="+interfaceId);
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    [global::Orleans.CodeGeneration.RegisterSerializerAttribute()]
+    internal class Orleans_Samples_Chirper_GrainInterfaces_ChirperMessageSerialization
+    {
+        
+        private static System.Reflection.FieldInfo fieldInfo2;
+        
+        private static System.Reflection.FieldInfo fieldInfo3;
+        
+        private static System.Reflection.FieldInfo fieldInfo4;
+        
+        private static System.Reflection.FieldInfo fieldInfo5;
+        
+        static Orleans_Samples_Chirper_GrainInterfaces_ChirperMessageSerialization()
+        {
+            Register();
+        }
+        
+        public static object DeepCopier(object original)
+        {
+            Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage input = ((Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage)(original));
+            Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage result = new Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage();
+            Orleans.Serialization.SerializationContext.Current.RecordObject(original, result);
+            result.Message = input.Message;
+            object objResult = ((object)(result));
+            object temp2 = ((System.Guid)(Orleans.Serialization.SerializationManager.DeepCopyInner(input.MessageId)));
+            fieldInfo2.SetValue(objResult, temp2);
+            object temp3 = input.PublisherAlias;
+            fieldInfo3.SetValue(objResult, temp3);
+            object temp4 = input.PublisherId;
+            fieldInfo4.SetValue(objResult, temp4);
+            object temp5 = input.Timestamp;
+            fieldInfo5.SetValue(objResult, temp5);
+            return objResult;
+        }
+        
+        public static void Serializer(object untypedInput, Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+        {
+            Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage input = ((Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage)(untypedInput));
+            Orleans.Serialization.SerializationManager.SerializeInner(input.Message, stream, typeof(string));
+            Orleans.Serialization.SerializationManager.SerializeInner(input.MessageId, stream, typeof(System.Guid));
+            Orleans.Serialization.SerializationManager.SerializeInner(input.PublisherAlias, stream, typeof(string));
+            Orleans.Serialization.SerializationManager.SerializeInner(input.PublisherId, stream, typeof(long));
+            Orleans.Serialization.SerializationManager.SerializeInner(input.Timestamp, stream, typeof(System.DateTime));
+        }
+        
+        public static object Deserializer(System.Type expected, global::Orleans.Serialization.BinaryTokenStreamReader stream)
+        {
+            Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage result = new Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage();
+            result.Message = ((string)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(string), stream)));
+            object objResult = ((object)(result));
+            object temp2 = ((System.Guid)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(System.Guid), stream)));
+            fieldInfo2.SetValue(objResult, temp2);
+            object temp3 = ((string)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(string), stream)));
+            fieldInfo3.SetValue(objResult, temp3);
+            object temp4 = ((long)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(long), stream)));
+            fieldInfo4.SetValue(objResult, temp4);
+            object temp5 = ((System.DateTime)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(System.DateTime), stream)));
+            fieldInfo5.SetValue(objResult, temp5);
+            return objResult;
+        }
+        
+        public static void Register()
+        {
+            global::Orleans.Serialization.SerializationManager.Register(typeof(Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage), DeepCopier, Serializer, Deserializer);
+            fieldInfo2 = typeof(Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage).GetField("<MessageId>k__BackingField", (System.Reflection.BindingFlags.Instance 
+                            | (System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)));
+            fieldInfo3 = typeof(Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage).GetField("<PublisherAlias>k__BackingField", (System.Reflection.BindingFlags.Instance 
+                            | (System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)));
+            fieldInfo4 = typeof(Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage).GetField("<PublisherId>k__BackingField", (System.Reflection.BindingFlags.Instance 
+                            | (System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)));
+            fieldInfo5 = typeof(Orleans.Samples.Chirper.GrainInterfaces.ChirperMessage).GetField("<Timestamp>k__BackingField", (System.Reflection.BindingFlags.Instance 
+                            | (System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)));
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.9.0")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    [global::Orleans.CodeGeneration.RegisterSerializerAttribute()]
+    internal class Orleans_Samples_Chirper_GrainInterfaces_ChirperUserInfoSerialization
+    {
+        
+        private static System.Reflection.FieldInfo fieldInfo1;
+        
+        private static System.Reflection.FieldInfo fieldInfo2;
+        
+        static Orleans_Samples_Chirper_GrainInterfaces_ChirperUserInfoSerialization()
+        {
+            Register();
+        }
+        
+        public static object DeepCopier(object original)
+        {
+            return original;
+        }
+        
+        public static void Serializer(object untypedInput, Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+        {
+            Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo input = ((Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo)(untypedInput));
+            Orleans.Serialization.SerializationManager.SerializeInner(input.UserAlias, stream, typeof(string));
+            Orleans.Serialization.SerializationManager.SerializeInner(input.UserId, stream, typeof(long));
+        }
+        
+        public static object Deserializer(System.Type expected, global::Orleans.Serialization.BinaryTokenStreamReader stream)
+        {
+            Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo result = default(Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo);
+            object objResult = ((object)(result));
+            object temp1 = ((string)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(string), stream)));
+            fieldInfo1.SetValue(objResult, temp1);
+            object temp2 = ((long)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(long), stream)));
+            fieldInfo2.SetValue(objResult, temp2);
+            return objResult;
+        }
+        
+        public static void Register()
+        {
+            global::Orleans.Serialization.SerializationManager.Register(typeof(Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo), DeepCopier, Serializer, Deserializer);
+            fieldInfo1 = typeof(Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo).GetField("<UserAlias>k__BackingField", (System.Reflection.BindingFlags.Instance 
+                            | (System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)));
+            fieldInfo2 = typeof(Orleans.Samples.Chirper.GrainInterfaces.ChirperUserInfo).GetField("<UserId>k__BackingField", (System.Reflection.BindingFlags.Instance 
+                            | (System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)));
+        }
+    }
+}
 namespace JASN.Contracts
 {
     using System;

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JASN.Web", "JASN vNext\JASN.Web.csproj", "{E107BBBD-CAB3-4B09-9A48-8437775786A8}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JASN.OrleansUtilities", "JASN.OrleansUtilities\JASN.OrleansUtilities.csproj", "{E284526A-DAA9-4468-AC65-7101C4066369}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{A45EED92-9A5D-447B-9C40-E48C79BC5921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JASN.CommandStack", "JASN.CommandStack\JASN.CommandStack.csproj", "{9295B477-E685-4A93-871F-29F1F9B887F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{A45EED92-9A5D-447B-9C40-E48C79BC5921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A45EED92-9A5D-447B-9C40-E48C79BC5921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A45EED92-9A5D-447B-9C40-E48C79BC5921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9295B477-E685-4A93-871F-29F1F9B887F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9295B477-E685-4A93-871F-29F1F9B887F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9295B477-E685-4A93-871F-29F1F9B887F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9295B477-E685-4A93-871F-29F1F9B887F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

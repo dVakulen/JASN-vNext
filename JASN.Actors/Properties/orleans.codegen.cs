@@ -16,6 +16,10 @@
 #pragma warning disable 1591
 #pragma warning disable 1998
 
+namespace Orleans.Samples.Chirper.Grains
+{
+    
+}
 namespace JASN.Actors
 {
     using Orleans;
