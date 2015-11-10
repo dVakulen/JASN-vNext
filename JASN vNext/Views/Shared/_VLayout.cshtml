@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-@* lang - The language of the page. *@
-@* no-js - The no JavaScript class is removed by modernizr if JavaScript is available. *@
 <html class="no-js" lang="en">
     <head @(ViewBag.OpenGraph == null ? null : Html.OpenGraphNamespace((OpenGraphMetadata)ViewBag.OpenGraph))>
   
     </head>
 <body>
-    @* Skip to main content link for people who use screen readers (Find out more at http://a11yproject.com/posts/skip-nav-links/). *@
-    @* Accessibility - Also, don't forget to add ARIA landmark roles to your page content http://www.paciellogroup.com/blog/2013/02/using-wai-aria-landmarks-2013/ *@
-    @* nav - The main navigation for the site. *@
-   
-    @* div id="main" - The main container for the page. Change this to the HTML5 main tag when it gains more browser support. *@
-    <div id="main" class="container body-content" role="main">
+<div id="main" class="container body-content" role="main">
         <!--[if lt IE 8]>
             <div class="alert alert-warning" role="alert">
                 <p>You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
